@@ -25,9 +25,15 @@ cp /vagrant/id_rsa /root/.ssh
 cp /vagrant/id_rsa.pub /root/.ssh/authorized_keys
 chmod 0600 /root/.ssh/*
 
-#Fix locale
+# Fix locale
 locale-gen "en_US.UTF-8"
 update-locale LC_ALL="en_US.UTF-8"
 
-#Update & upgrade
+# Import key and add k8s apt repo
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+deb https://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+
+# Update & upgrade
 apt-get update && apt-get upgrade -y
