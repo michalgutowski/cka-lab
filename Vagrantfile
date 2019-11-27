@@ -43,4 +43,20 @@ Vagrant.configure("2") do |config|
     ckaworker.vm.network "private_network", ip: "192.168.56.102"
     ckaworker.vm.provision :shell, path: "provision.sh"
   end
+ 
+   # The external lb node
+  config.vm.define "ckalb" do |ckalb|
+    ckalb.vm.provider "virtualbox" do |vb|
+      disk = 'ckalb.img'
+      vb.memory = 512
+      vb.cpus = 1
+      vb.name = "ckalb"
+    end
+
+    ckalb.vm.box = "ubuntu/xenial64"
+    ckalb.vm.hostname = "ckalb"
+    ckalb.vm.network "private_network", ip: "192.168.56.100"
+    ckalb.vm.provision :shell, path: "provision.sh"
+    ckalb.vm.provision :shell, path: "ckalb.sh"
+  end
 end
