@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # set up hosts file
-printf '192.168.56.101 ckamaster\n192.168.56.102 ckaworker\n' >>/etc/hosts
+printf '192.168.56.100 ckalb\n192.168.56.101 ckamaster\n192.168.56.102 ckaworker\n' >>/etc/hosts
 
 # allow root ssh logins
 printf '\nPermitRootLogin yes\n' >> /etc/ssh/sshd_config
@@ -14,7 +14,7 @@ mkdir -p /home/student/.ssh
 cp /vagrant/id_rsa /home/student/.ssh/
 cp /vagrant/id_rsa.pub /home/student/.ssh/authorized_keys
 chmod 0644 /home/student/.ssh/authorized_keys
-echo "student ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/student
+printf 'student ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/student
 chmod 440 /etc/sudoers.d/student
 
 # swap no allowed
