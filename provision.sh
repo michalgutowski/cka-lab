@@ -35,5 +35,5 @@ cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
 deb https://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 
-# Update & upgrade
-apt-get update && apt-get upgrade -y
+# Update, upgrade and instal nfs client tools
+apt-get update && apt-get upgrade -y && apt-get install -y nfs-common
