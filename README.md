@@ -41,7 +41,7 @@ For the master HA labs you will need to build three masters + lb node
 ### Connecting to cluster nodes 
 You can connect to all nodes using student user and submiting the private key e.g.:  
 ```
-# ssh student@ckamaster1 -i id_rsa
+# ssh student@192.168.56.101 -i id_rsa
 ```  
 ### Installing k8s master 
 In order to install first kubernetes master node connect to ckamaster1 and execute:  
