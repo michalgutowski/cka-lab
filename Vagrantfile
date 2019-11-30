@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
 
   # The kubernetes master
   config.vm.define "ckamaster1" do |ckamaster1|
-    ckamaster.vm.provider "virtualbox" do |vb|
+    ckamaster1.vm.provider "virtualbox" do |vb|
       disk = 'ckamaster1.img'
       vb.memory = 4 * 1024
       vb.cpus = 2
@@ -61,18 +61,18 @@ Vagrant.configure("2") do |config|
   end
 
   # The kubernetes worker node
-  config.vm.define "ckaworker" do |ckaworker|
-    ckaworker.vm.provider "virtualbox" do |vb|
-      disk = 'ckaworker.img'
+  config.vm.define "ckaworker1" do |ckaworker1|
+    ckaworker1.vm.provider "virtualbox" do |vb|
+      disk = 'ckaworker1.img'
       vb.memory = 2 * 1024
       vb.cpus = 1
-      vb.name = "ckaworker"
+      vb.name = "ckaworker1"
     end
 
-    ckaworker.vm.box = "ubuntu/xenial64"
-    ckaworker.vm.hostname = "ckaworker"
-    ckaworker.vm.network "private_network", ip: "192.168.56.102"
-    ckaworker.vm.provision :shell, path: "provision.sh"
+    ckaworker1.vm.box = "ubuntu/xenial64"
+    ckaworker1.vm.hostname = "ckaworker1"
+    ckaworker1.vm.network "private_network", ip: "192.168.56.104"
+    ckaworker1.vm.provision :shell, path: "provision.sh"
   end
  
    # The external lb node
