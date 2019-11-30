@@ -1,7 +1,7 @@
 ## Virtualbox lab environment for LFS258 Kubernetes Fundamentals training and practicing for CKA exams
 
 The Vagrant file creates following Ubuntu (Xenial) VMs - master(s), worker and load-balancer.  
-Master nodes have been prepared for installing k8s cluster with kubeadm commands.
+Master nodes have been prepared for installing k8s cluster with ```kubeadm``` commands using [kubernetes\kubeadm-config.yaml](./kubernetes/kubeadm-config.yaml) file
 Load-balancer node has been prepared with:
   - simple haproxy configuration to test external access for k8s services exposed with nodePort
   - simple nfs export ```/opt/sfw/``` for testing persistent volumes
@@ -39,14 +39,22 @@ For the master HA labs you will need to build three masters + lb node
 # vagrant up ckamaster1 ckamaster2 ckamaster3 ckalb
 ```  
 ### Connecting to cluster nodes 
-You can connect to all nodes using student user and submiting the private key:  
+You can connect to all nodes using student user and submiting the private key e.g.:  
 ```
-# ssh student@ckamaster -i id_rsa
+# ssh student@ckamaster1 -i id_rsa
 ```  
+### Installing k8s master 
+In order to install first kubernetes master node connect to ckamaster1 and execute:  
+```
+$ sudo -i
+# apt install docker.io kubeadm=1.15.1-00 kubectl=1.15.1-00 kubelet=1.15.1-00
+# kubeadm init --config=kubeadm-config.yaml --upload-certs| tee kubeadm-init.out
+```  
+Now it's your turn to figure how to add additional worker or master nodes. Have fun!
 
-### Notes
-  - Nodes are ready for k8s installation with kubeadm using ```kubernetes\kubeadm-config.yaml``` file
+#### Notes
   - Passwordless ssh has been configured between nodes using root user
-  - Passowrd for user **student**: **welcome1**
+  - Password for user **student**: **welcome1**
 
-Tested on MacOS 10.14.6 (Mojave), Vagrant 2.2.5 and VirtualBox 6.0.8, Ubuntu/Xenial vagrant box v. 20191114.0.0
+Tested on MacOS 10.14.6 (Mojave), Vagrant 2.2.5 and VirtualBox 6.0.8, Ubuntu/Xenial vagrant box v. 20191114.0.0.  
+Min. 16GB of RAM recommended.
