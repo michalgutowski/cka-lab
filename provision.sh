@@ -1,7 +1,13 @@
 #!/bin/sh
 
 # set up hosts file
-printf '192.168.56.100 ckalb\n192.168.56.101 ckamaster\n192.168.56.102 ckaworker\n' >>/etc/hosts
+cat <<-EOF >>/etc/hosts
+192.168.56.100 ckalb
+192.168.56.101 ckamaster1 ckamaster
+192.168.56.102 ckamaster2
+192.168.56.103 ckamaster3
+192.168.56.104 ckaworker1
+EOF
 
 # allow root ssh logins
 printf '\nPermitRootLogin yes\n' >> /etc/ssh/sshd_config
@@ -34,6 +40,10 @@ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
 deb https://apt.kubernetes.io/ kubernetes-xenial main
 EOF
+
+# Copy initial kubadm and calico config yaml files
+cp /vagrant/kubernetes/kubeadm-config.yaml /root/kubeadm-config.yaml
+cp /vagrant/kubernetes/calico.yaml /vagrant/kubernetes/rbac-kdd.yaml /home/student/
 
 # Update, upgrade and instal nfs client tools
 apt-get update && apt-get upgrade -y && apt-get install -y nfs-common
