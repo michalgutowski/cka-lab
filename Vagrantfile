@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
     end
 
     ckamaster1.vm.box = "ubuntu/xenial64"
-    ckamaster1.vm.hostname = "ckamaster"
+    ckamaster1.vm.hostname = "ckamaster1"
     ckamaster1.vm.network "private_network", ip: "192.168.56.101"
     ckamaster1.vm.network "forwarded_port", guest: 8001, host: 9001
     ckamaster1.vm.provision :shell, path: "provision.sh"
