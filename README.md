@@ -20,11 +20,11 @@ Pod CIDR:
 10.244.0.0/16 (with Calico)  
 ```
 ### Building clusters  
-For most labs one master + one worker + additional lb/nfs node is enough. To initially build the clsuter execute:  
+For most labs one master + one worker + additional lb/nfs node is enough. To initially build the cluster execute:  
 ```
 # vagrant up ckamaster1 ckaworker1 ckalb
 ```  
-All VMs will be created as CKA group in your Virtualbox.
+All VMs will be created under CKA group in your Virtualbox.
 Once the cluster is up and running you can use suspend it:  
 ```
 # vagrant suspend ckamaster1 ckaworker1 ckalb    
@@ -48,3 +48,5 @@ You can connect to all nodes using student user and submiting the private key:
   - Nodes are ready for k8s installation with kubeadm using ```kubeadm-config.yaml``` file
   - Passwordless ssh has been configured between nodes using root user
   - Passowrd for user **student**: **welcome1**
+
+Tested on MacOS 10.14.6 (Mojave), Vagrant 2.2.5 and VirtualBox 6.0.8, Ubuntu/Xenial vagrant box v. 20191114.0.0
