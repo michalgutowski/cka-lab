@@ -24,8 +24,8 @@ For most labs one master + one worker + additional lb/nfs node is enough. To ini
 ```
 # vagrant up ckamaster1 ckaworker1 ckalb
 ```  
-All VMs will be created under CKA group in your Virtualbox.
-Once the cluster is up and running you can use suspend it:  
+All VMs will be created under CKA group in your Virtualbox.  
+Once the cluster is up and running you can suspend it using:  
 ```
 # vagrant suspend ckamaster1 ckaworker1 ckalb    
 ```
@@ -45,7 +45,7 @@ You can connect to all nodes using student user and submiting the private key:
 ```  
 
 ### Notes
-  - Nodes are ready for k8s installation with kubeadm using ```kubeadm-config.yaml``` file
+  - Nodes are ready for k8s installation with kubeadm using ```kubernetes\kubeadm-config.yaml``` file
   - Passwordless ssh has been configured between nodes using root user
   - Passowrd for user **student**: **welcome1**
 
