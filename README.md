@@ -10,13 +10,13 @@ Load-balancer node has been prepared with:
 <img src="https://raw.githubusercontent.com/michalgutowski/cka-lab/master/lab-diagram.svg?sanitize=true">
 
 ### Cluster networking:  
-Internal IP addresses:   
+Internal IP addresses (you can copy the following to your ```/etc/hosts``` file):   
 ```bash
-192.168.56.100 (ckalb)  
-192.168.56.101 (ckamaster1)  
-192.168.56.102 (ckamaster2)  
-192.168.56.103 (ckamaster3)  
-192.168.56.104 (ckaworker1)  
+192.168.56.100 ckalb  
+192.168.56.101 ckamaster1 ckamaster  
+192.168.56.102 ckamaster2  
+192.168.56.103 ckamaster3  
+192.168.56.104 ckaworker1  
 ```
 Pod CIDR: 
 ```
