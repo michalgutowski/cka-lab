@@ -5,8 +5,11 @@ Master nodes have been prepared for installing k8s cluster with ```kubeadm``` co
 Load-balancer node has been prepared with:
   - simple haproxy configuration to test external access for k8s services exposed with nodePort
   - simple nfs export ```/opt/sfw/``` for testing persistent volumes
-  
-### K8s networking:  
+
+### Simpe lab diagram 
+<img src="https://raw.githubusercontent.com/michalgutowski/cka-lab/master/lab-diagram.svg?sanitize=true">
+
+### Cluster networking:  
 Internal IP addresses:   
 ```bash
 192.168.56.100 (ckalb)  
@@ -17,7 +20,7 @@ Internal IP addresses:
 ```
 Pod CIDR: 
 ```
-10.244.0.0/16 (with Calico)  
+10.244.0.0/16 (with Calico via enp0s8 interface)  
 ```
 ### Building clusters  
 For most labs one master + one worker + additional lb/nfs node is enough. To initially build the cluster execute:  
@@ -42,7 +45,7 @@ For the master HA labs you will need to build three masters + lb node
 You can connect to all nodes using student user and submiting the private key e.g.:  
 ```
 # ssh student@192.168.56.101 -i id_rsa
-```  
+``` 
 ### Installing k8s master 
 In order to install first kubernetes master node connect to ckamaster1 and execute:  
 ```
