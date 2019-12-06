@@ -55,6 +55,20 @@ $ sudo -i
 ```  
 Now it's your turn to figure how to add additional worker or master nodes. Have fun!
 
+### Useful kubectl commands that helps you with creating objects 
+
+Creating a deployment  
+```$ kubectl run```   
+  
+Creating a pod  
+```$ kubectl run --restart=Never```  
+  
+Creating a job  
+```$ kubectl run --restart=OnFailure```
+  
+Creating a cronjob   
+```$ kubectl run --restart=OnFailure --schedule=“* * * * *”```  
+
 #### Notes
   - Passwordless ssh has been configured between nodes using root user
   - Password for user **student**: **welcome1**
