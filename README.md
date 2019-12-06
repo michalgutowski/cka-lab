@@ -1,6 +1,6 @@
 ## Virtualbox lab environment for LFS258 Kubernetes Fundamentals training and practicing for CKA exams
 
-The Vagrant file creates following Ubuntu (Xenial) VMs - master(s), worker and load-balancer.  
+The Vagrant file creates following Ubuntu (Bionic) VMs - master(s), worker and load-balancer.  
 Master nodes have been prepared for installing k8s cluster with ```kubeadm``` commands using [kubernetes\kubeadm-config.yaml](./kubernetes/kubeadm-config.yaml) file
 Load-balancer node has been prepared with:
   - simple haproxy configuration to test external access for k8s services exposed with nodePort
@@ -50,7 +50,7 @@ You can connect to all nodes using student user and submiting the private key e.
 In order to install first kubernetes master node connect to ckamaster1 and execute:  
 ```
 $ sudo -i
-# apt install docker.io kubeadm=1.15.1-00 kubectl=1.15.1-00 kubelet=1.15.1-00
+# apt install docker.io kubeadm=1.16.1-00 kubectl=1.16.1-00 kubelet=1.16.1-00
 # kubeadm init --config=kubeadm-config.yaml --upload-certs| tee kubeadm-init.out
 ```  
 Now it's your turn to figure how to add additional worker or master nodes. Have fun!
@@ -73,5 +73,5 @@ Creating a cronjob
   - Passwordless ssh has been configured between nodes using root user
   - Password for user **student**: **welcome1**
 
-Tested on MacOS 10.14.6 (Mojave), Vagrant 2.2.5 and VirtualBox 6.0.8, Ubuntu/Xenial vagrant box v. 20191114.0.0.  
+Tested on MacOS 10.14.6 (Mojave), Vagrant 2.2.5 and VirtualBox 6.0.8, Ubuntu/Bionic vagrant box v. 20191205.0.0.  
 Min. 16GB of RAM recommended.
